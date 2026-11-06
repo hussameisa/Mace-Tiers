@@ -1,0 +1,75 @@
+# ---------------------------------------------------------------
+# MaceTiers config
+# You can edit this file by hand (then /macetiers reload) or use
+# the in-game commands: /macetiers tier ...  /macetiers setting ...
+# Enchant names are vanilla ids, e.g. density, wind_burst, breach,
+# sharpness, unbreaking, fire_aspect, knockback ...
+# ---------------------------------------------------------------
+settings:
+  # What happens to the player who DIES: RESET (back to first tier), DOWN_ONE, NONE
+  death-penalty: RESET
+  # Highest Wind Burst level a player may pick with /windburst
+  windburst-max: 3
+  # Tell the whole server when someone reaches the last tier
+  broadcast-final-tier: true
+  upgrade-sound: true
+  unbreakable: true
+  disabled-worlds: []
+
+# Order matters: top = first tier, bottom = last tier.
+# kills-to-next    = kills needed at this tier to reach the next tier
+# reward-commands  = run by the console when a player reaches this tier (%player% = name)
+tiers:
+  wood:
+    display: Wood
+    color: '#8B5A2B'
+    kills-to-next: 1
+    enchants: {}
+    reward-commands: []
+  copper:
+    display: Copper
+    color: '#B87333'
+    kills-to-next: 1
+    enchants:
+      density: 1
+    reward-commands: []
+  stone:
+    display: Stone
+    color: '#9A9A9A'
+    kills-to-next: 1
+    enchants:
+      density: 1
+      wind_burst: 1
+    reward-commands: []
+  gold:
+    display: Gold
+    color: '#FFC400'
+    kills-to-next: 1
+    enchants:
+      density: 2
+      wind_burst: 1
+    reward-commands: []
+  diamond:
+    display: Diamond
+    color: '#4AEDD9'
+    kills-to-next: 1
+    enchants:
+      density: 3
+      wind_burst: 1
+    reward-commands: []
+  netherite:
+    display: Netherite
+    color: '#5A4A5A'
+    kills-to-next: 1
+    enchants:
+      density: 4
+      wind_burst: 1
+    reward-commands: []
+  ultimate:
+    display: Ultimate
+    color: '#FF55FF'
+    kills-to-next: 1
+    enchants:
+      density: 5
+      wind_burst: 1
+    reward-commands: []

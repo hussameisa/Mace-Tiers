@@ -1,0 +1,26 @@
+name: MaceTiers
+version: '${project.version}'
+main: dev.macetiers.MaceTiersPlugin
+api-version: '1.21'
+description: Everyone gets a mace that upgrades with kills and resets on death.
+commands:
+  mace:
+    description: Show your mace tier and progress.
+    usage: /mace
+  macestats:
+    description: Show kill/death stats.
+    usage: /macestats [player]
+  macetop:
+    description: Mace tier leaderboard.
+    usage: /macetop
+  windburst:
+    description: Choose your Wind Burst level once unlocked.
+    usage: /windburst <level|reset>
+  macetiers:
+    description: Admin command for MaceTiers.
+    usage: /macetiers help
+    aliases: [mt]
+    permission: macetiers.admin
+permissions:
+  macetiers.admin:
+    default: op
