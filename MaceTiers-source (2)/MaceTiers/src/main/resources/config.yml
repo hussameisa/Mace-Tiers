@@ -1,0 +1,136 @@
+# ---------------------------------------------------------------
+# MaceTiers config
+# You can edit this file by hand (then /macetiers reload) or use
+# the in-game commands: /macetiers tier ...  /macetiers setting ...
+# Enchant names are vanilla ids, e.g. density, wind_burst, breach,
+# sharpness, unbreaking, fire_aspect, knockback ...
+# ---------------------------------------------------------------
+settings:
+  # What happens to the player who DIES:
+  #   RESET     = back to the first tier
+  #   DOWN_ONE  = drop one tier
+  #   NONE      = keep their tier
+  #   ULT_BAN   = RESET, and players who die at the "ult-tier" (see death-ban below) or higher
+  #               are DEATH BANNED
+  death-penalty: RESET
+  # Highest Wind Burst level a player may pick with /windburst
+  windburst-max: 3
+  # Tell the whole server when someone reaches the last kill tier
+  broadcast-final-tier: true
+  upgrade-sound: true
+  unbreakable: true
+  # Stop the mace from being put into bundles
+  block-bundles: true
+  disabled-worlds: []
+
+# ---------------------------------------------------------------
+# Death bans (used by ULT_BAN and by the Super Ultimate Mace)
+# ---------------------------------------------------------------
+death-ban:
+  # Console command that bans the player. %player% and %reason% are filled in.
+  # Want timed bans? Use a plugin like EssentialsX: "tempban %player% 7d %reason%"
+  command: "ban %player% %reason%"
+  # Players with this permission can never be death banned (nobody has it by default)
+  bypass-permission: "macetiers.bypass"
+  # ULT_BAN: dying at this tier or higher = death ban
+  ult-tier: ultimate
+  # ULT_BAN: only ban if the death was caused by another player
+  ult-requires-player-kill: false
+  ult-reason: "You died while holding the Ultimate Mace."
+
+# ---------------------------------------------------------------
+# Super Ultimate Mace
+# Craft it with a DRAGON EGG on top of a BREEZE ROD (vertical, any crafting grid).
+# It is craft-only: kills never upgrade you into it. Killing the same player
+# "kills-to-ban" times with it death bans them.
+# ---------------------------------------------------------------
+super-mace:
+  enabled: true
+  # The tier id players get when they craft it (it is added to the tier list automatically)
+  tier: super_ultimate
+  # Must be at the last kill tier (Ultimate) before crafting
+  require-final-tier: true
+  # Use up the dragon egg and breeze rod when crafting
+  consume-ingredients: true
+  # Kills on the SAME player needed to death ban them
+  kills-to-ban: 3
+  # Forget everyone's kill counts when the holder dies and loses the super mace
+  reset-counts-on-death: true
+  # Tell the victim how close they are to being banned
+  warn-victim: true
+  broadcast-craft: true
+  # The cutscene when you craft it: you float, frozen, while the mace sinks into your body
+  animation:
+    enabled: true
+    duration-ticks: 100      # 20 ticks = 1 second
+    float-height: 1.5        # how many blocks you rise
+    invulnerable: true       # can't be hurt during the cutscene
+    block-commands: true     # can't use commands (like /spawn) during the cutscene
+  # Placeholders: %killer% %victim% %kills%
+  ban-reason: "Death banned: killed %kills% times by %killer% with the Super Ultimate Mace."
+
+# Order matters: top = first tier, bottom = last tier.
+# kills-to-next    = kills needed at this tier to reach the next tier
+# reward-commands  = run by the console when a player reaches this tier (%player% = name)
+tiers:
+  wood:
+    display: Wood
+    color: '#8B5A2B'
+    kills-to-next: 1
+    enchants: {}
+    reward-commands: []
+  copper:
+    display: Copper
+    color: '#B87333'
+    kills-to-next: 1
+    enchants:
+      density: 1
+    reward-commands: []
+  stone:
+    display: Stone
+    color: '#9A9A9A'
+    kills-to-next: 1
+    enchants:
+      density: 1
+      wind_burst: 1
+    reward-commands: []
+  gold:
+    display: Gold
+    color: '#FFC400'
+    kills-to-next: 1
+    enchants:
+      density: 2
+      wind_burst: 1
+    reward-commands: []
+  diamond:
+    display: Diamond
+    color: '#4AEDD9'
+    kills-to-next: 1
+    enchants:
+      density: 3
+      wind_burst: 1
+    reward-commands: []
+  netherite:
+    display: Netherite
+    color: '#5A4A5A'
+    kills-to-next: 1
+    enchants:
+      density: 4
+      wind_burst: 1
+    reward-commands: []
+  ultimate:
+    display: Ultimate
+    color: '#FF55FF'
+    kills-to-next: 1
+    enchants:
+      density: 5
+      wind_burst: 1
+    reward-commands: []
+  super_ultimate:
+    display: Super Ultimate
+    color: '#FF3333'
+    kills-to-next: 1
+    enchants:
+      density: 6
+      wind_burst: 1
+    reward-commands: []
