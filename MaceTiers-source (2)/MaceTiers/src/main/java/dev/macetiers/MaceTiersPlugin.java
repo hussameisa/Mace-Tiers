@@ -98,6 +98,8 @@ public final class MaceTiersPlugin extends JavaPlugin implements Listener {
         registerRecipe();
 
         getServer().getPluginManager().registerEvents(this, this);
+        getServer().getPluginManager().registerEvents(new DragonMaceManager(this), this);
+        getServer().getPluginManager().registerEvents(new DragonMaceAbilities(), this);
 
         PlayerCommands pc = new PlayerCommands(this);
         for (String name : new String[]{"mace", "macestats", "macetop", "windburst"}) {
@@ -434,7 +436,11 @@ public final class MaceTiersPlugin extends JavaPlugin implements Listener {
         boolean found = false;
         ItemStack[] contents = p.getInventory().getContents();
         for (int i = 0; i < contents.length; i++) {
-            ItemStack it = contents[i];
+            ItemStack it = contents[i];\
+            if (DragonMaceManager.isDragonMace(it)) {
+                found = true;
+                continue;
+            }
             if (!isMace(it)) continue;
             if (found) {
                 p.getInventory().setItem(i, null);
