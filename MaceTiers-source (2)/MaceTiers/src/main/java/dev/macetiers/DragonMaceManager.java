@@ -4,7 +4,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.*;
-import org.bukkit.boss.DragonBattle;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -57,18 +56,6 @@ public class DragonMaceManager implements Listener {
         return mace;
     }
 
-    private boolean isDragonDead() {
-        for (World world : Bukkit.getWorlds()) {
-            if (world.getEnvironment() == World.Environment.THE_END) {
-                DragonBattle battle = world.getEnderDragonBattle();
-                if (battle != null && battle.hasBeenPreviouslyKilled()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onCraftPrepare(PrepareItemCraftEvent event) {
         ItemStack[] matrix = event.getInventory().getMatrix();
@@ -83,11 +70,8 @@ public class DragonMaceManager implements Listener {
             if (item.getType() == Material.DRAGON_EGG) hasDragonEgg = true;
         }
 
+        // Works anywhere in any crafting grid instantly!
         if (itemCount == 2 && hasBreezeRod && hasDragonEgg) {
-            if (!isDragonDead()) {
-                event.getInventory().setResult(null);
-                return;
-            }
             event.getInventory().setResult(createDragonMace());
         }
     }
