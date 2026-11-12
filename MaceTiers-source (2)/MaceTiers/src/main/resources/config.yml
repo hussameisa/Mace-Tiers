@@ -39,7 +39,7 @@ death-ban:
   ult-reason: "You died while holding the Ultimate Mace."
 
 # ---------------------------------------------------------------
-# Super Ultimate Mace
+# Dragon Mace
 # Craft it with a DRAGON EGG on top of a BREEZE ROD (vertical, any crafting grid).
 # It is craft-only: kills never upgrade you into it. Killing the same player
 # "kills-to-ban" times with it death bans them.
@@ -47,9 +47,9 @@ death-ban:
 super-mace:
   enabled: true
   # The tier id players get when they craft it (it is added to the tier list automatically)
-  tier: super_ultimate
+  tier: Dragon Mace
   # Must be at the last kill tier (Ultimate) before crafting
-  require-final-tier: true
+  require-final-tier: false
   # Use up the dragon egg and breeze rod when crafting
   consume-ingredients: true
   # Kills on the SAME player needed to death ban them
@@ -63,11 +63,11 @@ super-mace:
   animation:
     enabled: true
     duration-ticks: 100      # 20 ticks = 1 second
-    float-height: 1.5        # how many blocks you rise
+    float-height: 10.5        # how many blocks you rise
     invulnerable: true       # can't be hurt during the cutscene
     block-commands: true     # can't use commands (like /spawn) during the cutscene
   # Placeholders: %killer% %victim% %kills%
-  ban-reason: "Death banned: killed %kills% times by %killer% with the Super Ultimate Mace."
+  ban-reason: "Death banned: killed %kills% times by %killer% with the Dragon Mace."
 
 # Order matters: top = first tier, bottom = last tier.
 # kills-to-next    = kills needed at this tier to reach the next tier
@@ -127,7 +127,7 @@ tiers:
       wind_burst: 1
     reward-commands: []
   super_ultimate:
-    display: Super Ultimate
+    display: Dragon Mace
     color: '#FF3333'
     kills-to-next: 1
     enchants:
